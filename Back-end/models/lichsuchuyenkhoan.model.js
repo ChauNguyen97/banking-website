@@ -6,17 +6,8 @@ module.exports = {
     return db.load(sql);
   },
 
-  loadByIdTaiKhoanGuiWithOutNhacNo: id => {
-    const sql = `select DATE_FORMAT(ngay, "%d/%m/%Y") as ngay, idTaiKhoanNHGui, soTaiKhoanNhan,  
-                  giaoDich, noiDungChuyen, nganHangNhan
-                  from lichsuchuyenkhoan 
-                  where idTaiKhoanNHGui = ${id} and idNhacNo IS NULL
-                  order by ngay desc`;
-    return db.load(sql);
-  },
-
-  loadByIdTaiKhoanGuiWithNhacNo: id => {
-    const sql = `select * from lichsuchuyenkhoan where idTaiKhoanNHGui = ${id} and idNhacNo IS NOT NULL`;
+  loadById: id => {
+    const sql = `select * from lichsuchuyenkhoan where id = ${id}`;
     return db.load(sql);
   },
 

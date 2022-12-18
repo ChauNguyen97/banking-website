@@ -26,8 +26,6 @@ router.get('/danhsachtaikhoan', async (req, res) => {
       tkng: tkng[0],
       tktk
     }
-    delete tk.tkng.password;
-    delete tk.tkng.username;
     res.json(tk);
   }
 })
