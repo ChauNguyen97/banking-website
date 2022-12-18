@@ -61,13 +61,23 @@ const routes = [
       },
       {
         path: "taikhoannganhang",
-        name: "taikhoanhanghang",
+        name: "Tài Khoản Ngân Hàng",
         component: () => import("./../pages/customer/taikhoannganhang")
       },
       {
         path: "danhsachkhachhang",
-        name: "danhsachkhachhang",
+        name: "Danh Sách Khách Hàng",
         component: () => import("./../pages/employee/dskhachhang")
+      },
+      {
+        path: "lichsuchuyenkhoan",
+        name: "Lịch Sử Chuyển Khoản",
+        component: () => import("./../pages/customer/lichSuChuyenKhoan")
+      },
+      {
+        path: "lichsunhantien",
+        name: "Lịch Sử Nhận Tiền",
+        component: () => import("./../pages/customer/lichSuNhanTien")
       },
       {
         path: "/login",

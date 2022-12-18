@@ -1,7 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
 const createError = require('http-errors');
-const jwt = require('jsonwebtoken');
 const cors = require('cors')
 require('express-async-errors');
 
@@ -20,20 +19,7 @@ app.get('/', (req, res) => {
 app.use('/api/auth', require('./routes/auth.route'));
 app.use('/api/users', require('./routes/user.route'));
 
-function verifyAccessToken(req, res, next) {
-  // console.log(req.headers);
-  const token = req.headers['x-access-token'];
-  if (token) {
-    jwt.verify(token, 'shhhhh', function (err, payload) {
-      if (err) throw createError(403, err);
-      
-      res.locals.token = payload;
-      next();
-    });
-  } else {
-    throw createError(401, 'NO_TOKEN');
-  }
-}
+var verifyAccessToken = require('./models/auth.model').verifyAccessToken;
 
 app.use('/api/bangphi', verifyAccessToken, require('./routes/bangphi.route'));
 app.use('/api/khachhang', verifyAccessToken, require('./routes/khachhang.route'));
