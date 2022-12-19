@@ -1,11 +1,11 @@
 import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 
 import Dashboard from "@/pages/Dashboard.vue";
-import UserProfile from "@/pages/UserProfile.vue";
+import UserProfile from "@/pages/UserProfile/UserProfile.vue";
 import TableList from "@/pages/TableList.vue";
 import Typography from "@/pages/Typography.vue";
 import Icons from "@/pages/Icons.vue";
-import Login from "@/pages/Login/Login.vue";
+import Login from "@/pages/Login/LoginUser.vue";
 import Logout from "@/pages/Logout.vue"
 import Admin from "@/pages/admin/layout/layout.vue"
 import adminLogin from "@/pages/admin/adminLogin.vue"
@@ -70,6 +70,11 @@ const routes = [
     component: Login
   },
   {
+    path: "/forgot",
+    name: "Forgot Password",
+    component: () => import("../pages/Login/ForgotPassword")
+  },
+  {
     path: "/admin/login",
     name: "Admin Login",
     component: adminLogin
@@ -86,9 +91,14 @@ const routes = [
       },
       {
         path: "dashboard",
-        name: "Dashboard",
+        name: "Dashboard Admin",
         component: () => import("../pages/admin/DashboardAdmin")
-      }
+      },
+      {
+        path: "logout",
+        name: "Admin Logout",
+        component: () => import("../pages/admin/adminLogout")
+      },
     ]
   },
   { 

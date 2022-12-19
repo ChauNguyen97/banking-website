@@ -56,14 +56,9 @@
               >Login</button>
             </form>
             <!-- capcha -->
-
             <div class="mt-4">
               <div class="d-flex justify-content-center links">
-                Don't have an account?
-                <a href="#" class="ml-2">Sign Up</a>
-              </div>
-              <div class="d-flex justify-content-center links">
-                <a href="#">Forgot your password?</a>
+                <b-link to="/forgot">Quên mật khẩu?</b-link>
               </div>
             </div>
           </md-card-content>
@@ -108,9 +103,9 @@ export default {
     },
     checkCurrentLogin() {
       //goi api truy van accesstoken
-      if (localStorage.accessToken) {
-        this.$router.replace(this.$route.query.redirect || "/user");
-      }
+      // if (localStorage.accessToken) {
+      //   this.$router.replace(this.$route.query.redirect || "/user");
+      // }
     },
     onCaptchaVerified(recaptchaToken) {
       const self = this;
