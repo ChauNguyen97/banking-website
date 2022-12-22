@@ -59,22 +59,12 @@ const routes = [
       {
         path: "chuyenkhoannoibo",
         name: "Chuyển khoản",
-        component: () => import("../pages/ChuyenKhoan/chuyenKhoanNoiBo")
+        component: () => import("../pages/chuyenKhoan/chuyenKhoanNoiBo")
       },
       {
         path: "xacnhanchuyenkhoan",
         name: "Xác nhận Chuyển khoản",
-        component: () => import("../pages/ChuyenKhoan/xacNhanChuyenKhoanNoiBo")
-      },
-      {
-        path: "nhacno",
-        name: "Nhắc nợ",
-        component: () => import("../pages/NhacNo/NhacNo")
-      },
-      {
-        path: "taonhacno",
-        name: "Tạo Nhắc nợ",
-        component: () => import("../pages/NhacNo/TaoNo")
+        component: () => import("../pages/chuyenKhoan/xacNhanChuyenKhoanNoiBo")
       }
     ],
   },

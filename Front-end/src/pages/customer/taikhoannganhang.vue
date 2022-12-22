@@ -93,9 +93,19 @@ export default {
     money: VMoney
   },
   methods: {
-    ...mapActions(["getToken"]),
+    ...mapActions(["autoRefresh"]),
     async getDanhSachTaiKhoan(){
-      const accessToken = await this.getToken();
+      var accessToken = localStorage.getItem("accessToken");
+      var rfToken = localStorage.getItem("refreshToken");
+
+      const token = {
+          accessToken,
+          rfToken
+      };
+      const res = await this.autoRefresh(token);
+      if(res !== null && res.data.accessToken){
+          accessToken = localStorage.getItem("accessToken");
+      }
       axios.get("/taikhoannganhang/danhsachtaikhoan", {
         headers: {
           "x-access-token": accessToken

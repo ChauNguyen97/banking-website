@@ -80,7 +80,7 @@ export default {
           var accesstoken = resp.data.accessToken;
           var rftoken = resp.data.refreshToken;
           if (!accesstoken && !rftoken) {
-            this.loginWithWrongUsernameOrPwd();
+            this.loginFailed();
             return;
           }
           this.isLogin(accesstoken);
@@ -91,17 +91,11 @@ export default {
         })
         .catch(() => {
           this.loginFailed();
+          return;
         });
     },
     onCaptchaExpired: function() {
       this.$refs.recaptcha.reset();
-    },
-    loginWithWrongUsernameOrPwd(){
-      this.error = true;
-      this.message = "Username hoặc Password không đúng";
-      this.status = false;
-      //this.$store.dispatch("logout"); // <=
-      delete localStorage.accessToken;
     },
     loginFailed() {
       this.error = true;

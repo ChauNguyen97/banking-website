@@ -80,7 +80,6 @@
 </template>
 <script>
 import axios from "axios";
-import { mapActions } from 'vuex';
 
 export default {
   name: "edit-profile-form",
@@ -100,20 +99,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["autoRefresh"]),
-    
-    async changePassword(e){
-      var accessToken = localStorage.getItem("accessToken");
-      var rfToken = localStorage.getItem("refreshToken");
-
-      const token = {
-          accessToken,
-          rfToken
-      };
-      const res = await this.autoRefresh(token);
-      if(res !== null && res.data.accessToken){
-          accessToken = localStorage.getItem("accessToken");
-      }
+    changePassword(e){
       const data = {
         passwordOld: this.passwordOld,
         password: this.password
@@ -123,7 +109,7 @@ export default {
         method: "patch",
         url: "/taikhoannganhang/security",
         headers:{
-          "x-access-token" : accessToken
+          "x-access-token" : localStorage.getItem("accessToken")
         },
         data: data
       }).then(res => {
