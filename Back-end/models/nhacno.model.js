@@ -41,7 +41,31 @@ module.exports = {
                   INNER JOIN khachhang kh ON tk.idKhachHang = kh.id
                   WHERE nn.idTaiKhoanNo = ? `;
     params.push(idTaiKhoan);
-    if(!tinhTrang){
+    if(tinhTrang){
+      sql += ` AND nn.tinhTrang = ? `;
+      params.push(tinhTrang);
+    }
+    sql += ` ORDER by nn.ngayTao DESC
+              LIMIT ? OFFSET ?`;
+    params.push(limit); 
+    params.push(offset);
+
+    const countSql = `select count(id) as total from nhacno where idTaiKhoanNo = ?`;
+    
+    return [await db.select(sql, params), await db.select(countSql, [idTaiKhoan])];
+  },
+  
+  getGiaoDichNhacNoByIdTaiKhoan: async (idTaiKhoan, tinhTrang, limit, offset) => {
+    let params = [];
+    let sql = `SELECT nn.id, nn.noiDung, nn.tienNo, DATE_FORMAT(ngayTao, "%d/%m/%Y") as ngayTao, 
+                    kh.hoTen as nguoiTao, nn.tinhTrang, giaoDich, NoiDungChuyen
+                  FROM nhacno nn 
+                  INNER JOIN taikhoannganhang tk ON tk.id = nn.idTaiKhoanTao
+                  INNER JOIN khachhang kh ON tk.idKhachHang = kh.id
+                  INNER JOIN lichsuchuyenkhoan ls ON ls.idNhacNo = nn.id
+                  WHERE nn.idTaiKhoanNo = ? `;
+    params.push(idTaiKhoan);
+    if(tinhTrang){
       sql += ` AND nn.tinhTrang = ? `;
       params.push(tinhTrang);
     }
