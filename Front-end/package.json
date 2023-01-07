@@ -9,7 +9,9 @@
     "dev": "npm run serve"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.20.2",
     "axios": "^0.19.2",
+    "bable-loader": "^0.0.1-security",
     "bootstrap-vue": "^2.3.0",
     "chartist": "0.11.4",
     "core-js": "3.4.3",
@@ -28,6 +30,8 @@
     "vuex": "^3.1.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
     "@vue/cli-plugin-babel": "4.1.1",
     "@vue/cli-plugin-eslint": "4.1.1",
     "@vue/cli-plugin-router": "4.1.1",

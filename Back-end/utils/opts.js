@@ -38,10 +38,10 @@ var opts = {
     },
 
     MAIL: {
-        HOST: 'smtp.gmail.com',
-        PORT: '465',
-        USER: 'luattestmail@gmail.com',
-        PWD: '12345678@X'
+        HOST: 'smtp.office365.com',
+        PORT: '587',
+        USER: 'chau.opt@outlook.com',
+        PWD: '@1234bcd'
     },
 
     STATUS_PASSWORD: {

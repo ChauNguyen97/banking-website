@@ -12,8 +12,8 @@
               <div class="md-layout">
                 <div>
                   <b-form-group >
-                    <b-form-radio v-model="selected" value="1">Trong danh sách đã lưu</b-form-radio>
-                    <b-form-radio v-model="selected" value="2">Ngoài danh sách đã lưu</b-form-radio>
+                    <b-form-radio v-model="selected" value="1">Ngoài danh sách đã lưu</b-form-radio>
+                    <b-form-radio v-model="selected" value="2">Trong danh sách đã lưu</b-form-radio>
                   </b-form-group>
                 </div>
                 <div v-if="showDS" class="md-layout-item md-small-size-100 md-size-100">
